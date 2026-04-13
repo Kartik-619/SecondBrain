@@ -1,7 +1,6 @@
 const express=require('express');
 const app=express();
 const port=3009;
-const router=express.Router();
 app.use(express.json());
 
 app.get('/',(req,res)=>{
@@ -12,7 +11,7 @@ app.post('/link',(req,res)=>{
    const {message}=req.body;
    console.log(message);
    res.status(201).json({
-    message:'Hey',
+    message:message,
     data:message
    })
 
