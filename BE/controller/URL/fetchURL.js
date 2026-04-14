@@ -1,5 +1,5 @@
 //import { prisma } from "../prisma/lib/prisma"
-
+const { prisma } = require("../../prisma/lib/prisma");
 const fetchURL=async(req,res)=>{
     try{
         const {title,authorId,url}=req.query;
