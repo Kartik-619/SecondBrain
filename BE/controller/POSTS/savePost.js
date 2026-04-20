@@ -1,15 +1,15 @@
 const { prisma } = require("../../prisma/lib/prisma");
 const savePost=async( req,res)=>{
    
-    if(!authorId){
-        return res.status(400).json({
-            success:false,
-            message:"The Id is required"
-        });       
-    }
+ 
     try{
         const {authorId,message,title}=req.body;
-        
+        if(!authorId){
+            return res.status(400).json({
+                success:false,
+                message:"The Id is required"
+            });       
+        }
         const data=await prisma.post.create({
          
             data:{
@@ -22,6 +22,7 @@ const savePost=async( req,res)=>{
         }});
 
         res.status(200).json({
+            success:true,
             data
         });
     }catch(e){

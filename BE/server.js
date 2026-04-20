@@ -3,6 +3,11 @@ const swaggerUi=require('swagger-ui-express');
 const swaggerSpec=require('./docs/swagger');
 const app=express();
 const port=3009;
+const cors = require('cors');
+app.use(cors({
+    origin: 'http://localhost:5173', // or '*' for dev only
+    credentials: true
+}));
 app.use(express.json());
 
 app.use('/api',require('./routes/URL'));
