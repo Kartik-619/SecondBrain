@@ -46,6 +46,19 @@ const router = express.Router();
  */
 
 router.post('/writePost', require('../controller/POSTS/savePost'));
+/**
+ * @swagger
+ * /updatePost:
+ *  patch:
+ *      summary: Update an exisiting post
+ *      tags:
+ *          - Posts
+ *      responses:
+ *          200:
+ *              description: Post updated successfully
+ *          500: 
+ *              description : Internal Server Error
+ */
 router.patch('/updatePost', require('../controller/POSTS/updatePost'));
 router.get('/getPost', require('../controller/POSTS/fetchPost'));
 router.delete('/deletePost', require('../controller/POSTS/deletePost'));
