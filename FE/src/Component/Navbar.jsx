@@ -1,4 +1,4 @@
-import { navLinks } from "../constants"
+import { navLinks } from "../../constant/constants"
 import {Link,useNavigate} from "react-router-dom";
 const NavBar = () => {
   
