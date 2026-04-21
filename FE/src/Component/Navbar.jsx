@@ -1,0 +1,43 @@
+import { navLinks } from "../constants"
+import {Link,useNavigate} from "react-router-dom";
+const NavBar = () => {
+  
+    return (
+        <header className="w-full sticky top-0 z-50">
+            {/* Navigation bar section */}
+            <nav className="w-full sticky top-0 z-50 px-5 2xl:px-0">
+                {/* Company logo (Apple logo in this case) */}
+{/*Logo*/}
+                {/* Navigation links list */}
+                <ul>
+                    {/* We are importing each element of the navbar from the navLink array using map function, making the UI short and clean */}
+                    {navLinks.map(({ label,path }) => (
+                        // Each label is mapped to a <li> element with unique key
+                       
+                            <li key={label}>
+
+                            {/* Each label links to its own section (href uses label name) */}
+                            <Link to={path}>{label}</Link>
+                        </li>
+                     
+                       
+                    ))}
+                </ul>
+
+                {/* Right-side icons for search and cart */}
+                <div className="flex-center gap-3">
+                    {/* Search button with icon */}
+                    <button >
+                        <img src="/search.svg" alt="Search" />
+                    </button>
+
+                 <Link to="/login"> Login</Link> 
+                 <Link to="/register"> Register</Link> 
+                   
+                </div>
+            </nav>
+        </header>
+    )
+}
+
+export default NavBar

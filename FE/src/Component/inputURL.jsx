@@ -59,7 +59,7 @@ export default function InputCard() {
                         
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Message
+                               URL
                             </label>
                             <textarea
                                 placeholder="Write your post content here..."
@@ -70,12 +70,12 @@ export default function InputCard() {
                                 required
                             />
                         </div>
-                        
+                        //make description i/p field
                         <button 
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
                             type="submit"
                         >
-                            Save Message
+                            Save URL
                         </button>
 
                     </form>
