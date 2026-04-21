@@ -70,7 +70,7 @@ export default function InputCard() {
                                 required
                             />
                         </div>
-                        //make description i/p field
+                       { /*make description i/p field*/}
                         <button 
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
                             type="submit"

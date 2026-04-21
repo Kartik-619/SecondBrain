@@ -1,8 +1,7 @@
 const navLinks = [
-    { label: "Mac" ,path:"/"},
-    { label: "Store" ,path:"/store"},
-    { label: "iPhone",path:"/iphone" },
-    { label: "Watch",path:"/watch" },
-    { label: "Vision",path:"/vision" },
-    { label: "AirPods",path:"/aripods" },
+    { label: "secondbrain" ,path:"/"},
+    { label: "profile" ,path:"/profile"},
+    { label: "About",path:"/about" },
+    { label: "my posts",path:"/posts" },
+   
 ];
