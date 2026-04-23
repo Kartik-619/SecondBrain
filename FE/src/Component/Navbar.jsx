@@ -27,9 +27,7 @@ const NavBar = () => {
 
         {/* Right-side actions */}
         <div className="flex items-center gap-4">
-          <button>
-            <img src="/search.svg" alt="Search" className="w-5 h-5" />
-          </button>
+          
           <Link 
             to="/login" 
             className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
