@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <header className="w-full sticky top-0 z-50">
-      <nav className="w-full bg-white border-b border-black px-5 py-3 flex items-center justify-between">
+    <header className="w-screen sticky top-0 z-50">
+      <nav className="w-screen bg-white border-b border-black px-5 py-3 flex items-center justify-between">
         
         {/* Logo placeholder */}
-        <div className="text-xl font-bold text-gray-800">
+        <div className="text-xl font-bold text-black">
           secondbrain
         </div>
 

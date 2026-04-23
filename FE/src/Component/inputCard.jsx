@@ -4,7 +4,7 @@ export default function InputCard() {
     const [message, setMessage] = useState('');
     const [title, setTitle] = useState('');
     const authorId = '123456';
-    
+
     const SubmitMessage = async (e) => {
         e.preventDefault();
         try {
@@ -29,57 +29,64 @@ export default function InputCard() {
             console.error(e);
         }
     }
-    
+
     return (
-        <div className="min-h-screen bg-black flex items-center justify-center p-4">
+        <div className="min-h-[100vh] flex items-center justify-center px-4 py-10">
             
-            {/* Outer White Container */}
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8">
+            <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8 space-y-6">
 
-            <h2 className="text-3xl font-extrabold text-black mb-6 text-center tracking-tight">                    Create a Post
-                </h2>
+                {/* Heading */}
+                <div className="space-y-1">
+                    <h2 className="text-2xl font-bold text-black">
+                        Create Post
+                    </h2>
+                    <p className="text-sm text-black">
+                        Share something meaningful
+                    </p>
+                </div>
 
-                {/* Inner Small Card */}
+                {/* Form */}
+                <form className="space-y-5" onSubmit={SubmitMessage}>
                     
-                    <form className="space-y-4" onSubmit={SubmitMessage}>
-                        
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Title
-                            </label>
-                            <input 
-                                type="text"
-                                placeholder="Enter your title"
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                required
-                            />
-                        </div>
-                        
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Message
-                            </label>
-                            <textarea
-                                placeholder="Write your post content here..."
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-                                rows="2"
-                                required
-                            />
-                        </div>
-                        
-                        <button 
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
-                            type="submit"
-                        >
-                            Save Message
-                        </button>
+                    {/* Title */}
+                    <div className="space-y-1.5">
+                        <label className="text-sm font-medium text-gray-700">
+                            Title
+                        </label>
+                        <input 
+                            type="text"
+                            placeholder="Enter your title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            required
+                        />
+                    </div>
+                    
+                    {/* Message */}
+                    <div className="space-y-1.5">
+                        <label className="text-sm font-medium text-gray-700">
+                            Message
+                        </label>
+                        <textarea
+                            placeholder="Write your post content here..."
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition"
+                            rows="4"
+                            required
+                        />
+                    </div>
+                    
+                    {/* Button */}
+                    <button 
+                        className="w-full bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-semibold py-2.5 rounded-lg transition-all duration-150 shadow-md hover:shadow-lg"
+                        type="submit"
+                    >
+                        Publish Post
+                    </button>
 
-                    </form>
-              
+                </form>
             </div>
         </div>
     )
