@@ -7,13 +7,13 @@ function App() {
   return (
     <div className="min-h-screen w-screen bg-neutral-700">
       <NavBar />
-      <BrowserRouter>
+    
       <Routes>
-      <Route to={'/'} element={<Home/>}/>
-      <Route to={'/login'} element={<Login/>}/>
-      <Route to={'/register'} element={<Register/>}/>
+      <Route path={'/'} element={<Home/>}/>
+    {/*<Route to={'/login'} element={<Login/>}/>
+      //<Route to={'/register'} element={<Register/>}/>*/}
       </Routes>
-      </BrowserRouter>
+     
     </div>
   )
 }
