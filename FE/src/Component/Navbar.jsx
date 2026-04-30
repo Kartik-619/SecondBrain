@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <header className="w-screen sticky top-0 z-50">
-      <nav className="w-screen bg-white border-b border-black px-5 py-3 flex items-center justify-between">
+      <nav className="w-screen bg-black border-b border-black px-5 py-5 flex items-center justify-between">
         
         {/* Logo placeholder */}
-        <div className="text-xl font-bold text-black">
+        <div className="text-xl font-bold text-white">
           secondbrain
         </div>
 
@@ -17,7 +17,7 @@ const NavBar = () => {
             <li key={label}>
               <Link 
                 to={path} 
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className="text-white hover:text-white font-medium transition-colors"
               >
                 {label}
               </Link>
@@ -26,17 +26,17 @@ const NavBar = () => {
         </ul>
 
         {/* Right-side actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mr-5">
           
           <Link 
             to="/login" 
-            className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            className="text-white hover:text-blue-600 font-medium transition-colors"
           >
             Login
           </Link>
           <Link 
             to="/register" 
-            className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            className="text-white hover:text-blue-600 font-medium transition-colors"
           >
             Register
           </Link>
