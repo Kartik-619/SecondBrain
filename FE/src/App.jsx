@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import InputCard from './Component/inputCard'
 import NavBar from './Component/Navbar'
 import Home from './Pages/Home/Home'
+import Login from './Pages/Auth/Login'
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
     
       <Routes>
       <Route path={'/'} element={<Home/>}/>
-    {/*<Route to={'/login'} element={<Login/>}/>
-      //<Route to={'/register'} element={<Register/>}/>*/}
+    <Route path={'/login'} element={<Login/>}/>
+     {/* //<Route to={'/register'} element={<Register/>}/>*/}
       </Routes>
      
     </div>

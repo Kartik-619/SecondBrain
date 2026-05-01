@@ -4,7 +4,7 @@ const LoginController=async (req,res)=>{
     try{
         const {email,password}=req.body;
         if(!email || !password){
-            return res.status.json({success:false,message:'Fields are incomplete'});
+            return res.status(400).json({success:false,message:'Fields are incomplete'});
         }
 
         const user=await prisma.user.findUnique({
@@ -20,7 +20,7 @@ const LoginController=async (req,res)=>{
             });
         }
 
-        if(password=!user.password){
+        if(password!==user.password){
             return res.status(401).json({
                 success:false,
                 message:'Password does not match'
