@@ -6,15 +6,30 @@ const registerController=async (req,res)=>{
         if(!username || !email || !password){
             return res.status(400).json({success:false,message:'Incomplete field'});
         }
+        const existingUser=await prisma.user.findUnique({
+            where:{
+                email
+            }
+        });
 
-        const register= await prisma.user.create({
-            username:username,
+        if(existingUser){
+            return res.status(401).json({
+                success:false,
+                message:"The user already exists"});
+        }
+
+        const user= await prisma.user.create({
+          data:{  username:username,
             email:email,
-            password:password
+            password:password}
         });
 
         res.json({
-            register,
+            user: {
+                id: user.id,
+                username: user.username,
+                email: user.email
+            },
             success:true
         })
 
