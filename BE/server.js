@@ -12,6 +12,7 @@ app.use(express.json());
 
 app.use('/api',require('./routes/URL'));
 app.use('/api',require('./routes/POST'));
+app.use('/auth',require('./routes/auth'));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.listen(port,()=>{

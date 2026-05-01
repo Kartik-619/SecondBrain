@@ -11,7 +11,7 @@ export default function Home() {
 
           {/* Logo / Badge */}
           <div className="mb-6">
-            <span className="px-4 py-2 rounded-full bg-indigo-500/20 text-indigo-300 text-sm font-medium border border-indigo-400/30">
+            <span className="px-4 py-2 rounded-full bg-indigo-700 text-indigo-100 text-sm font-medium border border-indigo-400/30">
               Your Personal Knowledge Vault
             </span>
           </div>

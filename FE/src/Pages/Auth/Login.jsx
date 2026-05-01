@@ -17,7 +17,6 @@ export default function Login(){
                 {...register("password",
                     {minLength:8,message:'Min 8 characters are required'})}
                 />
-
                 <button type="submit"> Login</button>
             </form>
         </div>
