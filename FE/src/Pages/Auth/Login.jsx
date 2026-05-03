@@ -19,7 +19,7 @@ export default function Login() {
       setLogin(true);
       if(res.data.success){
         alert("Login Successful")
-        navigate('/');
+        navigate('/mypost');
       }
 
       console.log(res.data);

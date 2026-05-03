@@ -2,11 +2,27 @@
 const { prisma } = require("../../prisma/lib/prisma");
 const fetchPOST=async(req,res)=>{
     try{
-        const {title,authorId,message}=req.query;
+        const {id}=req.query;
+        if( !id){
+            return res.status(400).json({
+                success:false,
+                message:"Enter the title correctly or login again"
+            })
+        }
+        const data=await prisma.post.findFirst({
+            where:{
+                authorId:id,
+            }
+        });
         res.status(200).json({
-            authorId,
-            title:title,
-            message:message
+           success:true,
+           data:{
+            id:data.id,
+            title:data.title,
+            message:data.message,
+            url:data.url 
+
+           }
         });
     }catch(e){
         console.error("get url error :",e);
