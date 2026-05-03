@@ -3,7 +3,7 @@ const { post } = require("../routes/POST");
 
 const FetchAllPost=async(req,res)=>{
     try{
-        const {id}=req.body;
+        const {id}=req.params;
         if(!id){
             return res.status(402).json({
                 success:false,
@@ -13,22 +13,14 @@ const FetchAllPost=async(req,res)=>{
         const result=await prisma.post.findMany({
             where:{
                 AuthorId:id
-            },
-            include:{
-                posts:true
             }
+           
         });
 
         return res.status(200).json({
             success:true,
             message:"Posts retreived successfully",
-            data:{
-                id:result.AuthorId,
-                post:result.post,
-                title:result.post.title,
-                message:result.post.message,
-                url:result.post.url
-            }
+            data:result
         })
     }catch(e){
         console.error(e);
