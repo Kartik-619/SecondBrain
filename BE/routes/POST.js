@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth=require('../middleware/auth');
 
 /**
  * @swagger
@@ -45,7 +46,7 @@ const router = express.Router();
  *         description: Internal server error
  */
 
-router.post('/writePost', require('../controller/POSTS/savePost'));
+router.post('/writePost', auth,require('../controller/POSTS/savePost'));
 /**
  * @swagger
  * /updatePost:
@@ -59,8 +60,8 @@ router.post('/writePost', require('../controller/POSTS/savePost'));
  *          500: 
  *              description : Internal Server Error
  */
-router.patch('/updatePost', require('../controller/POSTS/updatePost'));
-router.get('/getPost', require('../controller/POSTS/fetchPost'));
-router.delete('/deletePost', require('../controller/POSTS/deletePost'));
+router.patch('/updatePost',auth, require('../controller/POSTS/updatePost'));
+router.get('/getPost',auth, require('../controller/POSTS/fetchPost'));
+router.delete('/deletePost',auth, require('../controller/POSTS/deletePost'));
 
 module.exports = router;
