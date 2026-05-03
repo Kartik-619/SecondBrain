@@ -21,28 +21,28 @@ const MyPost=()=>{
         FetchAll();
     },[])
     return(
-        <div className="container">
-        {data.map((i, k) => (
-            <div key={k} className="card">
-                <h3 className="title">{i.title}</h3>
+       <div className="container">
+            {data.map((i, k) => (
+                <div key={k} className="card">
+                    <h3 className="title">{i.title}</h3>
 
-                {i.message && <p className="content">{i.message}</p>}
+                    {i.message && <p className="content">{i.message}</p>}
 
-                {i.url && (
-                    <a href={i.url} target="_blank" rel="noreferrer">
-                        View Resource
-                    </a>
-                )}
+                    {i.url && (
+                        <a href={i.url} target="_blank" rel="noreferrer">
+                            View Resource
+                        </a>
+                    )}
 
-                {/* optional fields */}
-                {i.createdAt && (
-                    <p className="date">
-                        {new Date(i.createdAt).toLocaleDateString()}
-                    </p>
-                )}
-            </div>
-        ))}
-    </div>
+                    {/* optional fields */}
+                    {i.createdAt && (
+                        <p className="date">
+                            {new Date(i.createdAt).toLocaleDateString()}
+                        </p>
+                    )}
+                </div>
+            ))}
+        </div>
     )
 }
 export default MyPost;
