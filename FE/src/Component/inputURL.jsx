@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function InputCard() {
     const [message, setMessage] = useState('');
     const [title, setTitle] = useState('');
-    const authorId = '123456';
+    const [url,setUrl]=useState('');
     
     const SubmitMessage = async (e) => {
         e.preventDefault();
@@ -63,6 +63,19 @@ export default function InputCard() {
                             </label>
                             <textarea
                                 placeholder="Write your post content here..."
+                                value={url}
+                                onChange={(e) => setUrl(e.target.value)}
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                                rows="2"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Message
+                            </label>
+                            <textarea
+                                placeholder="Write your post content here..."
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
@@ -75,7 +88,7 @@ export default function InputCard() {
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
                             type="submit"
                         >
-                            Save URL
+                            Save Post
                         </button>
 
                     </form>
