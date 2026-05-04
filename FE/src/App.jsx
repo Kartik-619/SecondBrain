@@ -4,6 +4,7 @@ import Home from './Pages/Home/Home'
 import Login from './Pages/Auth/Login'
 import Register from './Pages/Auth/Register'
 import MyPost from './Pages/Content/MyPosts'
+import InputCard from './Component/inputURL'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path={'/login'} element={<Login/>}/>
       <Route path={'/register'} element={<Register/>}/>
       <Route path={'/myposts'} element={<MyPost/>}/>
+      <Route path={'/createpost'} element={<InputCard/>}/>
       </Routes>
      
     </div>

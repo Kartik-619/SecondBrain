@@ -6,7 +6,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [login,setLogin]=useState(false);
-  const naviagte=useNavigate();
+  const navigate=useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ export default function Login() {
       setLogin(true);
       if(res.data.success){
         alert("Login Successful")
-        navigate('/mypost');
+        navigate('/myposts');
       }
 
       console.log(res.data);
