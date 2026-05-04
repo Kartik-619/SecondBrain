@@ -92,7 +92,7 @@ const MyPost = () => {
             {/* Empty State */}
             {data.length === 0 && (
                 <div className="text-center mt-10 text-gray-500">
-                    No posts found. Start by creating one 🚀
+                    No posts found. Start by creating one 
                 </div>
             )}
         </div>

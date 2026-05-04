@@ -2,7 +2,7 @@
 const { prisma } = require("../../prisma/lib/prisma");
 const fetchPOST=async(req,res)=>{
     try{
-        const {id}=req.query;
+        const id=req.user.id;
         if( !id){
             return res.status(400).json({
                 success:false,

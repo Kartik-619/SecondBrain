@@ -3,7 +3,8 @@ const savePost=async( req,res)=>{
    
  
     try{
-        const {authorId,message,title}=req.body;
+        const authorId=req.user.id;
+        const {message,title}=req.body;
         if(!authorId){
             return res.status(400).json({
                 success:false,

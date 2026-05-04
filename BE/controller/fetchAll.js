@@ -3,7 +3,7 @@ const { post } = require("../routes/POST");
 
 const FetchAllPost=async(req,res)=>{
     try{
-        const {id}=req.params;
+        const id=req.user.id;
         if(!id){
             return res.status(402).json({
                 success:false,

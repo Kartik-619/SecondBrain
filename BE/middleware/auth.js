@@ -1,6 +1,6 @@
 const jwt=require('jsonwebtoken');
 
-const verifyTOken=(req,res,next)=>{
+const verifyToken=(req,res,next)=>{
     try {
         const token=req.cookies.token; //extract token from cookie
         if(!token){
@@ -16,10 +16,10 @@ const verifyTOken=(req,res,next)=>{
         next();
 
     } catch (error) {
-        return res.status(403).json({
+        return res.status(401).json({
             success:false,
             message:"Invalid Authorization, Please try again"
         });
     }
 }
-module.exports=verifyTOken;
+module.exports=verifyToken;

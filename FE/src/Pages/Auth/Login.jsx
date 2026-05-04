@@ -14,6 +14,8 @@ export default function Login() {
       const res = await axios.post('http://localhost:3009/auth/login', {
         email,
         password,
+      },{
+        withCredentials:true
       });
 
       setLogin(true);
