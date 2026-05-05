@@ -2,10 +2,18 @@ const { prisma } = require("../../prisma/lib/prisma");
 
 const deletePost=async(req,res)=>{
     try{
+        const authorId=req.user.id;
+        if(!authorId){
+            return res.status(401).success({
+                success:false,
+                message:'Unauthorized Access'
+            });
+        }
         const {title}=req.query;
         const deletePost=await prisma.post.delete({
             where:{
-                title:title
+                title:title,
+                authorId:authorId
             }
         });
         res.status(200).json({
