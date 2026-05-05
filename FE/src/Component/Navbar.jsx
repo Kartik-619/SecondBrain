@@ -57,7 +57,7 @@ const NavBar = () => {
           ) : (
             <>
               <span className="text-gray-300 text-sm">
-                Welcome {user?.name || "User"}
+                Welcome {user?.username || "User"}
               </span>
 
               <button

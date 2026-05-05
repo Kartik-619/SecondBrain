@@ -12,8 +12,9 @@ export default function InputCard() {
                 headers: { 
                     "Content-Type": "application/json"
                 },
+                credentials:"include",
                 method: "POST",
-                body: JSON.stringify({ title, message, authorId })
+                body: JSON.stringify({ title, message,url })
             });
 
             if (!data.ok) {

@@ -1,5 +1,4 @@
-const { prisma } = require("../../prisma/lib/prisma");
-const { post } = require("../routes/POST");
+const { prisma } = require("./../prisma/lib/prisma");
 
 const FetchAllPost=async(req,res)=>{
     try{
@@ -12,7 +11,7 @@ const FetchAllPost=async(req,res)=>{
         }
         const result=await prisma.post.findMany({
             where:{
-                AuthorId:id
+                authorId:id
             }
            
         });

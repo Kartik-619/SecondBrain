@@ -1,5 +1,5 @@
 import {create} from "zustand";
-
+import axios from "axios";
 export const useUserStore=create((set)=>({
     user:null,
     loggedIn:false,
@@ -24,8 +24,11 @@ export const useUserStore=create((set)=>({
                 });
             }
         }catch(e){
-            set({user:null});
-            set({loading:false})
+            set({
+                user: null,
+                loggedIn: false,
+                loading: false
+            });
         }
     }
 })

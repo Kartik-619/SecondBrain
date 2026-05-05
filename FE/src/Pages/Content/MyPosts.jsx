@@ -8,7 +8,9 @@ const MyPost = () => {
 
     const FetchAll = async () => {
         try {
-            const res = await axios.get('http://localhost:3009/api/');
+            const res = await axios.get('http://localhost:3009/api/myposts',{
+                withCredentials:true
+            });
 
             if (!res.data.success) return;
 
