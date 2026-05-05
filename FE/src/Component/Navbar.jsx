@@ -1,9 +1,9 @@
 import { navLinks } from "../../constant/constants";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthStore } from "../../store/authStore";
+import { useUserStore } from '../store/authStore'
 
 const NavBar = () => {
-  const { user, logout } = useAuthStore();
+  const { user, logout } = useUserStore();
   const navigate = useNavigate();
 
   const handleLogout = async () => {

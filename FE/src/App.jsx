@@ -7,9 +7,10 @@ import MyPost from './Pages/Content/MyPosts'
 import InputCard from './Component/inputURL'
 import { useUserStore } from './store/authStore'
 import { useEffect } from 'react'
+import ProtectedRoute from './Component/protectedRoute'
 
 function App() {
-  const checkAuth = useAuthStore((state) => state.checkAuth);
+  const checkAuth = useUserStore((state) => state.checkAuth);
 
   useEffect(()=>{
     checkAuth();
@@ -17,13 +18,16 @@ function App() {
   return (
     <div className="min-h-screen w-screen bg-neutral-700">
       <NavBar />
-    
+   
       <Routes>
       <Route path={'/'} element={<Home/>}/>
       <Route path={'/login'} element={<Login/>}/>
       <Route path={'/register'} element={<Register/>}/>
-      <Route path={'/myposts'} element={<MyPost/>}/>
-      <Route path={'/createpost'} element={<InputCard/>}/>
+          <Route path={'/myposts'} element={ <ProtectedRoute> <MyPost/>      </ProtectedRoute>}/>
+
+      <Route path={'/createpost'} element={
+      <ProtectedRoute><InputCard/>      </ProtectedRoute>
+    }/>
       </Routes>
      
     </div>

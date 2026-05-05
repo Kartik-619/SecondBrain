@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUserStore } from '../../store/authStore';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -8,6 +9,7 @@ export default function Login() {
   const [login,setLogin]=useState(false);
   const navigate=useNavigate();
 
+  const {checkAuth}=useUserStore();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -20,7 +22,8 @@ export default function Login() {
 
       setLogin(true);
       if(res.data.success){
-        alert("Login Successful")
+        alert("Login Successful");
+        await checkAuth();
         navigate('/myposts');
       }
 

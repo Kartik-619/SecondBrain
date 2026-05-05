@@ -11,8 +11,17 @@ export const useUserStore=create((set)=>({
                 "http://localhost:3009/api/check-auth"
             ,{withCredentials:true});
             if(res.data.success){
-                set({user:res.data.user});
-                set({loggedIn:true});
+                set({
+                    user: res.data.user,
+                    loggedIn: true,
+                    loading: false
+                });
+            }else{
+                set({
+                    user: null,
+                    loggedIn: false,
+                    loading: false
+                });
             }
         }catch(e){
             set({user:null});
