@@ -5,6 +5,7 @@ import Login from './Pages/Auth/Login'
 import Register from './Pages/Auth/Register'
 import MyPost from './Pages/Content/MyPosts'
 import InputCard from './Component/inputURL'
+import Post from './Component/Post'
 import { useUserStore } from './store/authStore'
 import { useEffect } from 'react'
 import ProtectedRoute from './Component/protectedRoute'
@@ -24,6 +25,7 @@ function App() {
       <Route path={'/login'} element={<Login/>}/>
       <Route path={'/register'} element={<Register/>}/>
           <Route path={'/myposts'} element={ <ProtectedRoute> <MyPost/>      </ProtectedRoute>}/>
+          <Route path={'/post/:id'} element={ <ProtectedRoute> <Post/>      </ProtectedRoute>}/>
 
       <Route path={'/createpost'} element={
       <ProtectedRoute><InputCard/>      </ProtectedRoute>

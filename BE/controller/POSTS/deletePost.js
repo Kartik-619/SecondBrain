@@ -3,19 +3,29 @@ const { prisma } = require("../../prisma/lib/prisma");
 const deletePost=async(req,res)=>{
     try{
         const authorId=req.user.id;
+        const postId=req.user.params;
         if(!authorId){
             return res.status(401).success({
                 success:false,
                 message:'Unauthorized Access'
             });
         }
-        const {title}=req.query;
+
+        if(!postId){
+            return res.status(400).json({
+                success:false,
+                message:"Action on this post is unauthorized"
+            });
+        }
+
         const deletePost=await prisma.post.delete({
             where:{
-                title:title,
-                authorId:authorId
+                authorId:authorId,
+                id:postId
+             
             }
         });
+        
         res.status(200).json({
             success:true,
             message:'Post deleted successfully',

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useUserStore } from "../../store/authStore";
 
 const MyPost = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const navigate = useNavigate();
     const logout = useUserStore((state) => state.logout);
 
@@ -27,7 +26,6 @@ const MyPost = () => {
             setData(res.data.data);
 
         } catch (e) {
-            // 🔴 If unauthorized → force logout
             if (e.response?.status === 401) {
                 await logout();
                 navigate("/login");
@@ -83,6 +81,7 @@ const MyPost = () => {
                         {data.map((i, k) => (
                             <div
                                 key={k}
+                                onClick={() => navigate(`/post/${i.id}`)} 
                                 className="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition duration-300 flex flex-col justify-between"
                             >
                                 {/* Title */}

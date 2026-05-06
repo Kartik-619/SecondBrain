@@ -61,7 +61,7 @@ router.post('/writePost', auth,require('../controller/POSTS/savePost'));
  *              description : Internal Server Error
  */
 router.patch('/updatePost',auth, require('../controller/POSTS/updatePost'));
-router.get('/getPost',auth, require('../controller/POSTS/fetchPost'));
+router.get('/getPost/:id',auth, require('../controller/POSTS/fetchPost'));
 router.delete('/deletePost',auth, require('../controller/POSTS/deletePost'));
 
 module.exports = router;
