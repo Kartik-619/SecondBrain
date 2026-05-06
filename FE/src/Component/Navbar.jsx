@@ -4,10 +4,14 @@ import { useUserStore } from '../store/authStore'
 
 const NavBar = () => {
   const { user, logout } = useUserStore();
+  const checkAuth = useUserStore((state) => state.checkAuth);
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     await logout();
+    await checkAuth();
+    console.log(user,"After logout")
     navigate("/login");
   };
 

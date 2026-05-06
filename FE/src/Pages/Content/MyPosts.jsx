@@ -1,23 +1,41 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../../store/authStore";
 
 const MyPost = () => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     const navigate = useNavigate();
+    const logout = useUserStore((state) => state.logout);
 
     const FetchAll = async () => {
         try {
-            const res = await axios.get('http://localhost:3009/api/myposts',{
-                withCredentials:true
-            });
+            setLoading(true);
 
-            if (!res.data.success) return;
+            const res = await axios.get(
+                "http://localhost:3009/api/myposts",
+                { withCredentials: true }
+            );
+
+            if (!res.data.success) {
+                setData([]);
+                return;
+            }
 
             setData(res.data.data);
 
         } catch (e) {
-            console.error(e);
+            // 🔴 If unauthorized → force logout
+            if (e.response?.status === 401) {
+                await logout();
+                navigate("/login");
+            } else {
+                console.error(e);
+            }
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -42,60 +60,81 @@ const MyPost = () => {
                 </button>
             </div>
 
-            {/* 🔷 Grid Layout (4 per row) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {/* 🔴 SKELETON LOADER */}
+            {loading ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {[...Array(8)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="bg-white rounded-2xl shadow-md p-5 animate-pulse"
+                        >
+                            <div className="h-4 bg-gray-300 rounded w-3/4 mb-3"></div>
+                            <div className="h-3 bg-gray-200 rounded w-full mb-2"></div>
+                            <div className="h-3 bg-gray-200 rounded w-5/6 mb-2"></div>
+                            <div className="h-3 bg-gray-200 rounded w-2/3 mb-4"></div>
 
-                {data.map((i, k) => (
-                    <div
-                        key={k}
-                        className="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition duration-300 flex flex-col justify-between"
-                    >
-                        {/* Title */}
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                            {i.title}
-                        </h3>
-
-                        {/* Message */}
-                        {i.message && (
-                            <p className="text-sm text-gray-600 mb-3 line-clamp-3">
-                                {i.message}
-                            </p>
-                        )}
-
-                        {/* URL */}
-                        {i.url && (
-                            <a
-                                href={i.url}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-blue-500 text-sm hover:underline mb-3"
-                            >
-                                🔗 View Resource
-                            </a>
-                        )}
-
-                        {/* Footer */}
-                        <div className="mt-auto pt-3 border-t text-xs text-gray-400 flex justify-between items-center">
-                            <span>
-                                {i.createdAt
-                                    ? new Date(i.createdAt).toLocaleDateString()
-                                    : "No Date"}
-                            </span>
-
-                            <span className="text-gray-500">
-                                #{i.id}
-                            </span>
+                            <div className="h-3 bg-gray-200 rounded w-1/3 mt-4"></div>
                         </div>
-                    </div>
-                ))}
-
-            </div>
-
-            {/* Empty State */}
-            {data.length === 0 && (
-                <div className="text-center mt-10 text-gray-500">
-                    No posts found. Start by creating one 
+                    ))}
                 </div>
+            ) : (
+                <>
+                    {/* 🔷 Posts Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                        {data.map((i, k) => (
+                            <div
+                                key={k}
+                                className="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition duration-300 flex flex-col justify-between"
+                            >
+                                {/* Title */}
+                                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                                    {i.title}
+                                </h3>
+
+                                {/* Message */}
+                                {i.message && (
+                                    <p className="text-sm text-gray-600 mb-3 line-clamp-3">
+                                        {i.message}
+                                    </p>
+                                )}
+
+                                {/* URL */}
+                                {i.url && (
+                                    <a
+                                        href={i.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="text-blue-500 text-sm hover:underline mb-3"
+                                    >
+                                        🔗 View Resource
+                                    </a>
+                                )}
+
+                                {/* Footer */}
+                                <div className="mt-auto pt-3 border-t text-xs text-gray-400 flex justify-between items-center">
+                                    <span>
+                                        {i.createdAt
+                                            ? new Date(i.createdAt).toLocaleDateString()
+                                            : "No Date"}
+                                    </span>
+
+                                    <span className="text-gray-500">
+                                        #{i.id}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+
+                    {/* 🔷 Empty State */}
+                    {!loading && data.length === 0 && (
+                        <div className="text-center mt-10 text-gray-500">
+                            No posts found. Start by creating one 🚀
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );

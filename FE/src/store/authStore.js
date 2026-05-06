@@ -30,6 +30,22 @@ export const useUserStore=create((set)=>({
                 loading: false
             });
         }
+    },
+
+    logout:async()=>{
+        try{
+            await axios.post('http://localhost:3009/auth/logout',{},{
+                withCredentials:true
+            });
+
+            set({
+                user: null,
+                loggedIn: false,
+                loading: false
+            });
+        }catch(e){
+            console.error(e);
+        }
     }
 })
 );
