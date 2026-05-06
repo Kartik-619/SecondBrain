@@ -7,6 +7,7 @@ router.get("/check-auth", verifyToken, (req, res) => {
         success: true,
         user: {
             id: req.user.id,
+            username:req.user.username,
             email: req.user.email
         }
     });

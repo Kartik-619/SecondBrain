@@ -9,7 +9,7 @@ export default function Login() {
   const [login,setLogin]=useState(false);
   const navigate=useNavigate();
 
-  const {checkAuth}=useUserStore();
+  const {checkAuth,setUser}=useUserStore();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -23,7 +23,7 @@ export default function Login() {
       setLogin(true);
       if(res.data.success){
         alert("Login Successful");
-        await checkAuth();
+        setUser(res.data.user);
         navigate('/myposts');
       }
 

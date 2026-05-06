@@ -31,6 +31,11 @@ export const useUserStore=create((set)=>({
             });
         }
     },
+    setUser: (user) => set({
+        user,
+        loggedIn: true,
+        loading: false
+    }),
 
     logout:async()=>{
         try{
