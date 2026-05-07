@@ -3,7 +3,7 @@ const { prisma } = require("../../prisma/lib/prisma");
 const deletePost=async(req,res)=>{
     try{
         const authorId=req.user.id;
-        const postId=req.user.params;
+        const postId=Number(req.user.params);
         if(!authorId){
             return res.status(401).success({
                 success:false,
@@ -20,7 +20,6 @@ const deletePost=async(req,res)=>{
 
         const deletePost=await prisma.post.delete({
             where:{
-                authorId:authorId,
                 id:postId
              
             }

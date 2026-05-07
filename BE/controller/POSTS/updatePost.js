@@ -2,11 +2,19 @@
 const { prisma } = require("../../prisma/lib/prisma");
 const updatePOST = async (req, res) => {
     try {
-        const id=req.user.id;
-        if(!id){
+        const UserId=req.user.id;
+        const postId=Number(req.params.id);
+        if(!UserId){
             return res.status(401).json({
                 success:false,
                 message:"Unauthorized User"
+            });
+        }
+
+        if(!postId){
+            return res.status(401).json({
+                success:false,
+                message:"Post id is Invalid"
             });
         }
         
@@ -21,7 +29,7 @@ const updatePOST = async (req, res) => {
         }
         const data = await prisma.post.update({
             where: {
-                authorId: id
+                id:postId
             },
             data: {
                 title: title,
@@ -31,10 +39,8 @@ const updatePOST = async (req, res) => {
         });
 
         res.status(200).json({
-            title: data.title,
-            message: data.message,
-            authorId: data.authorId,
-            id: data.id
+           success:true,
+           data
         });
     } catch (e) {
         console.error("update url error :", e);

@@ -36,17 +36,19 @@ const SinglePost = () => {
     async function updatePost() {
         try {
             const res = await axios.put(
-                "http://localhost:3009/api/updatePost",
+                `http://localhost:3009/api/updatePost/${id}`,
                 {
-                    id: post.id,   // ✅ FIXED
+                    id: id,   // 
                     title: form.title,
                     message: form.message
                 },
                 { withCredentials: true }
             );
 
+            alert("Post is editted");
             setPost(res.data.data);
             setEditMode(false);
+            navigate('/myposts');
 
         } catch (e) {
             console.error("update failed", e);
@@ -56,10 +58,10 @@ const SinglePost = () => {
     async function deletePost() {
         try {
             await axios.delete(
-                `http://localhost:3009/api/deletePost/${post.id}`,
+                `http://localhost:3009/api/deletePost/${id}`,
                 { withCredentials: true }
             );
-
+            alert("Post deleted successfully");
             navigate("/myposts");
 
         } catch (e) {

@@ -60,8 +60,8 @@ router.post('/writePost', auth,require('../controller/POSTS/savePost'));
  *          500: 
  *              description : Internal Server Error
  */
-router.patch('/updatePost',auth, require('../controller/POSTS/updatePost'));
+router.put('/updatePost/:id',auth, require('../controller/POSTS/updatePost'));
 router.get('/getPost/:id',auth, require('../controller/POSTS/fetchPost'));
-router.delete('/deletePost',auth, require('../controller/POSTS/deletePost'));
+router.delete('/deletePost/:id',auth, require('../controller/POSTS/deletePost'));
 
 module.exports = router;
