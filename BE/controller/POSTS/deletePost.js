@@ -3,7 +3,7 @@ const { prisma } = require("../../prisma/lib/prisma");
 const deletePost=async(req,res)=>{
     try{
         const authorId=req.user.id;
-        const postId=Number(req.user.params);
+        const postId=Number(req.params.id);
         if(!authorId){
             return res.status(401).success({
                 success:false,
