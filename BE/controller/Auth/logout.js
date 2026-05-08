@@ -1,12 +1,6 @@
 const Logout=async(req,res)=>{
     try{
-        const id=req.user.id;
-        if(!id){
-            return res.status(401).json({
-                success:false,
-                message:'Unauthorized Acess'
-            });
-        }
+       
         res.clearCookie("token", {
             httpOnly: true,
             secure: false,      // true in production (HTTPS)

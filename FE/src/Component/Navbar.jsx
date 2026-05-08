@@ -10,8 +10,8 @@ const NavBar = () => {
 
   const handleLogout = async () => {
     await logout();
-    await checkAuth();
-    console.log(user,"After logout")
+    
+    console.log(user,"After logout");
     navigate("/login");
   };
 
