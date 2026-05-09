@@ -1,6 +1,7 @@
 import { navLinks } from "../../constant/constants";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserStore } from '../store/authStore'
+import SearchBar from "./searchBar";
 
 const NavBar = () => {
   const { user, logout } = useUserStore();
@@ -60,6 +61,8 @@ const NavBar = () => {
             </>
           ) : (
             <>
+
+              <SearchBar/>
               <span className="text-gray-300 text-sm">
                 Welcome {user?.username || "User"}
               </span>

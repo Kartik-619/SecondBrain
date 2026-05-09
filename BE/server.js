@@ -15,6 +15,7 @@ app.use(cookieParser());
 app.use('/api',require('./routes/POST'));
 app.use('/api',require('./routes/MyPost'));
 app.use('/api',require('./routes/checkauth'));
+app.use('/api',require('./routes/search'));
 app.use('/auth',require('./routes/auth'));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 

@@ -4,7 +4,7 @@ const FetchAllPost=async(req,res)=>{
     try{
         const id=req.user.id;
         if(!id){
-            return res.status(402).json({
+            return res.status(401).json({
                 success:false,
                 message:"User not recognized"
             });

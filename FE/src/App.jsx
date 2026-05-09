@@ -9,6 +9,7 @@ import Post from './Component/Post'
 import { useUserStore } from './store/authStore'
 import { useEffect } from 'react'
 import ProtectedRoute from './Component/protectedRoute'
+import Footer from './Component/Footer'
 
 function App() {
   const checkAuth = useUserStore((state) => state.checkAuth);
@@ -31,7 +32,7 @@ function App() {
       <ProtectedRoute><InputCard/>      </ProtectedRoute>
     }/>
       </Routes>
-     
+     <Footer/>
     </div>
   )
 }
