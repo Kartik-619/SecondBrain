@@ -7,9 +7,11 @@ const auth=require('../middleware/auth');
  * /writePost:
  *   post:
  *     summary: Create a new post
- *     description: Add a new post to the database with title, message and linked to an author via authorId
+ *     description: Create a new post for the authenticated user
  *     tags:
  *       - Posts
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -17,51 +19,126 @@ const auth=require('../middleware/auth');
  *           schema:
  *             type: object
  *             required:
- *               - authorId
  *               - title
  *             properties:
- *               authorId:
- *                 type: string
- *                 description: ID of the author (user)
  *               title:
  *                 type: string
- *                 description: Title of the post
+ *                 example: My First Post
  *               message:
  *                 type: string
- *                 description: Content of the post (optional field)
+ *                 example: Hello world
  *     responses:
  *       200:
- *         description: Post successfully created
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: object
- *                   description: The created post object
+ *         description: Post created successfully
  *       400:
- *         description: Bad request - Missing authorId or title
+ *         description: Missing required fields
+ *       401:
+ *         description: Unauthorized
  *       500:
  *         description: Internal server error
  */
-
 router.post('/writePost', auth,require('../controller/POSTS/savePost'));
 /**
  * @swagger
- * /updatePost:
- *  patch:
- *      summary: Update an exisiting post
- *      tags:
- *          - Posts
- *      responses:
- *          200:
- *              description: Post updated successfully
- *          500: 
- *              description : Internal Server Error
+ * /updatePost/{id}:
+ *   put:
+ *     summary: Update an existing post
+ *     description: Update title and message of a post
+ *     tags:
+ *       - Posts
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID of the post
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 example: Updated Post Title
+ *               message:
+ *                 type: string
+ *                 example: Updated content
+ *     responses:
+ *       200:
+ *         description: Post updated successfully
+ *       400:
+ *         description: Invalid request
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: Post not found
+ *       500:
+ *         description: Internal Server Error
  */
 router.put('/updatePost/:id',auth, require('../controller/POSTS/updatePost'));
+
+/**
+ * @swagger
+ * /getPost/{id}:
+ *   get:
+ *     summary: Get a post by ID
+ *     description: Fetch a specific post belonging to the authenticated user
+ *     tags:
+ *       - Posts
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID of the post
+ *     responses:
+ *       200:
+ *         description: Post fetched successfully
+ *       400:
+ *         description: Invalid post ID
+ *       404:
+ *         description: Post not found
+ *       500:
+ *         description: Internal Server Error
+ */
 router.get('/getPost/:id',auth, require('../controller/POSTS/fetchPost'));
+/**
+ * @swagger
+ * /deletePost/{id}:
+ *   delete:
+ *     summary: Delete a post
+ *     description: Delete a post belonging to the authenticated user
+ *     tags:
+ *       - Posts
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID of the post
+ *     responses:
+ *       200:
+ *         description: Post deleted successfully
+ *       400:
+ *         description: Invalid post ID
+ *       404:
+ *         description: Post not found
+ *       500:
+ *         description: Internal Server Error
+ */
 router.delete('/deletePost/:id',auth, require('../controller/POSTS/deletePost'));
 
 module.exports = router;

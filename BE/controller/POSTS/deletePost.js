@@ -5,7 +5,7 @@ const deletePost=async(req,res)=>{
         const authorId=req.user.id;
         const postId=Number(req.params.id);
         if(!authorId){
-            return res.status(401).success({
+            return res.status(401).json({
                 success:false,
                 message:'Unauthorized Access'
             });
@@ -20,7 +20,8 @@ const deletePost=async(req,res)=>{
 
         const deletePost=await prisma.post.delete({
             where:{
-                id:postId
+                id:postId,
+                authorId
              
             }
         });

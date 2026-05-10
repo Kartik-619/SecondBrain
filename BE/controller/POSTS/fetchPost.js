@@ -20,11 +20,12 @@ const fetchPOST=async(req,res)=>{
         const data=await prisma.post.findFirst({
             where:{
                 id:postId,
+                authorId:id
             }
         });
 
         if(!data){
-            return res.status(402).json({
+            return res.status(404).json({
                 success:false,
                 message:"The user cannot fetch the post"
             });

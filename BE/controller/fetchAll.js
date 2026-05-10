@@ -23,6 +23,10 @@ const FetchAllPost=async(req,res)=>{
         })
     }catch(e){
         console.error(e);
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
     }
 }
 module.exports=FetchAllPost;

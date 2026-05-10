@@ -13,7 +13,7 @@ const registerController=async (req,res)=>{
         });
 
         if(existingUser){
-            return res.status(401).json({
+            return res.status(409).json({
                 success:false,
                 message:"The user already exists"});
         }
