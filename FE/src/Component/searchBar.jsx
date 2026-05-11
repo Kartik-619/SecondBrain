@@ -181,7 +181,7 @@ const SearchBar = () => {
         try {
 
           const res = await API.get(
-              `http://localhost:3009/api/search?q=${debouncedQuery}`,             
+              `/api/search?q=${debouncedQuery}`,             
             );
 
           setResults(res.data );
