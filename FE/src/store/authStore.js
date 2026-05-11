@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import API from "../lib/axios";
 
 export const useUserStore = create((set) => ({
     user: null,
@@ -8,9 +8,8 @@ export const useUserStore = create((set) => ({
 
     checkAuth: async () => {
         try {
-            const res = await axios.get(
-                "http://localhost:3009/api/check-auth",
-                { withCredentials: true }
+            const res = await API.get(
+                "/api/check-auth",
             );
 
             set({
@@ -37,8 +36,8 @@ export const useUserStore = create((set) => ({
 
     logout: async () => {
         try {
-            await axios.post(
-                "http://localhost:3009/auth/logout",
+            await API.post(
+                "/auth/logout",
                 {},
                 { withCredentials: true }
             );
