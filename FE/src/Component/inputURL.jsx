@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import API
+ from "../lib/axios";
 export default function InputCard() {
     const [message, setMessage] = useState('');
     const [title, setTitle] = useState('');
@@ -8,14 +9,14 @@ export default function InputCard() {
     const SubmitMessage = async (e) => {
         e.preventDefault();
         try {
-            const data = await fetch('http://localhost:3009/api/writePost', {
-                headers: { 
-                    "Content-Type": "application/json"
-                },
-                credentials:"include",
-                method: "POST",
-                body: JSON.stringify({ title, message,url })
-            });
+            const data = await API.post("/api/writePost",
+                {
+                  title,
+                  message,
+                  url
+                }
+              );
+              
 
             if (!data.ok) {
                 return console.error('cannot fetch data');

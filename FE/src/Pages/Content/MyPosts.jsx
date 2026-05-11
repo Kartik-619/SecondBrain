@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../../lib/axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUserStore } from "../../store/authStore";
 
@@ -13,9 +13,8 @@ const MyPost = () => {
         try {
             setLoading(true);
 
-            const res = await axios.get(
-                "http://localhost:3009/api/myposts",
-                { withCredentials: true }
+            const res = await API.get(
+                "/api/myposts"
             );
 
             if (!res.data.success) {
@@ -78,9 +77,9 @@ const MyPost = () => {
                 <>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-                        {data.map((i, k) => (
+                        {data.map((i) => (
                             <div
-                                key={k}
+                                key={i.id}
                                 onClick={() => navigate(`/post/${i.id}`)} 
                                 className="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition duration-300 flex flex-col justify-between"
                             >

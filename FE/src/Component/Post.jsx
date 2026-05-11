@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../lib/axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 const SinglePost = () => {
@@ -15,10 +15,9 @@ const SinglePost = () => {
 
     async function fetchPost() {
         try {
-            const res = await axios.get(
-                `http://localhost:3009/api/getPost/${id}`,
-                { withCredentials: true }
-            );
+          const res = await API.get(
+            `/api/getPost/${id}`
+          );
 
             if (!res.data.success) return;
 
@@ -35,15 +34,13 @@ const SinglePost = () => {
 
     async function updatePost() {
         try {
-            const res = await axios.put(
-                `http://localhost:3009/api/updatePost/${id}`,
-                {
-                    id: id,   // 
-                    title: form.title,
-                    message: form.message
-                },
-                { withCredentials: true }
-            );
+          await API.put(
+            `/api/updatePost/${id}`,
+            {
+              title: form.title,
+              message: form.message
+            }
+          );
 
             alert("Post is editted");
             setPost(res.data.data);
@@ -57,10 +54,9 @@ const SinglePost = () => {
 
     async function deletePost() {
         try {
-            await axios.delete(
-                `http://localhost:3009/api/deletePost/${id}`,
-                { withCredentials: true }
-            );
+          await API.delete(
+            `/api/deletePost/${id}`
+          );
             alert("Post deleted successfully");
             navigate("/myposts");
 

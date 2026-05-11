@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SearchIcon from "./icon/search";
-import axios from "axios";
+import API from "../lib/axios";
 import { useNavigate } from "react-router-dom";
 
 const SearchInput = ({
@@ -180,19 +180,14 @@ const SearchBar = () => {
 
         try {
 
-          const res =
-            await axios.get(
-              `http://localhost:3009/api/search?q=${debouncedQuery}`,
-              {
-                withCredentials:
-                  true,
-              }
+          const res = await API.get(
+              `http://localhost:3009/api/search?q=${debouncedQuery}`,             
             );
 
           setResults(res.data );
 
         } catch ( error) {
-          console.log(rror );
+          console.log(error );
         }
       };
 
