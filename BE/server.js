@@ -6,7 +6,7 @@ const port=3009;
 const cookieParser=require('cookie-parser');
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:5173', // or '*' for dev only
+    origin: process.env.CLIENT_URL, // or '*' for dev only
     credentials: true
 }));
 app.use(express.json());
