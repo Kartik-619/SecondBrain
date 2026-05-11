@@ -3,7 +3,7 @@ const Logout=async(req,res)=>{
        
         res.clearCookie("token", {
             httpOnly: true,
-            secure: false,      // true in production (HTTPS)
+            secure: true,      // true in production (HTTPS)
             sameSite: "none"
         });
         return res.status(200).json({
