@@ -16,6 +16,7 @@ Inspired by the concept of a <b>"Second Brain"</b> — an external system to cap
 
 <div align="center">
 
+
 ###  Frontend  
 🔗 https://second-brain-self-ten.vercel.app
 
@@ -24,6 +25,10 @@ Inspired by the concept of a <b>"Second Brain"</b> — an external system to cap
 
 ###  Swagger Docs  
 🔗 https://secondbrain-wrez.onrender.com/api-docs
+
+Test credentials:
+testEmail: test12@gmail.com
+test password:test1234
 
 </div>
 
@@ -56,9 +61,9 @@ Inspired by the concept of a <b>"Second Brain"</b> — an external system to cap
 
 
 # Challenges faced 
-- While deploying the application I faced an issue in logging in as the attributes for my setCookie and clear COokie function in the login controller and logout controller for the sameSite were different in login it was sameSite:lax and sameSite:none.
+- While deploying the application I faced an issue in logging in as the attributes for my setCookie and clear Cookie function in the login controller and logout controller for the sameSite were different in login it was sameSite:lax and sameSite:none.
 
-- 
+-  While implementing the search feature, I faced issues with excessive API requests being sent to the backend on every keystroke. This initially caused unnecessary database queries and affected performance. To solve this, I implemented a debounce mechanism on the frontend so the search request is only triggered after the user stops typing for a short duration.
 
 ---
 
