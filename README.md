@@ -45,9 +45,10 @@ test password:test1234
 <br/>
 <br/>
 
-### Notes View
+### Create Notes
 
-<img width="900" alt="Notes" src="https://github.com/user-attachments/assets/04acd591-b8d8-4da4-884c-4a978e23ec8b" />
+<img width="1901" height="840" alt="image" src="https://github.com/user-attachments/assets/fac6e4f6-9739-4216-b59c-2cdeb00ba123" />
+
 
 <br/>
 <br/>
