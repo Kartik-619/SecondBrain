@@ -1,159 +1,65 @@
-# 🧠 Second Brain App
+<h1 align="center">
+ 🧠 Second Brain App
+</h1>
 
-A full-stack **Second Brain application** built to help users store, organize, search, and manage personal notes/resources in one centralized place.
+<p align="center">
+A full-stack <b>Second Brain Application</b> to store, organize, search, and manage personal notes/resources in one centralized place.
+</p>
 
-The idea behind this project is inspired by the concept of a **“second brain”** — an external system to capture knowledge, ideas, links, and thoughts so they are always accessible.
-
-Users can securely authenticate, create notes/resources, edit or delete them, search through saved content, and access their personal knowledge base from anywhere.
+<p align="center">
+Inspired by the concept of a <b>"Second Brain"</b> — an external system to capture ideas, knowledge, resources, and thoughts so they are always accessible.
+</p>
 
 ---
 
-# 🌍 Live Demo
+##  Live Demo
 
-### Frontend
-[Live Website](https://second-brain-self-ten.vercel.app)
+<div align="center">
 
-### Backend API
-[API Server](https://secondbrain-wrez.onrender.com)
+###  Frontend  
+🔗 https://second-brain-self-ten.vercel.app
 
-### Swagger API Docs
-`https://secondbrain-wrez.onrender.com/api-docs`
+###  Backend API  
+🔗 https://secondbrain-wrez.onrender.com
 
-Example:
+###  Swagger Docs  
+🔗 https://secondbrain-wrez.onrender.com/api-docs
 
-```txt
-https://secondbrain-wrez.onrender.com/api-docs
+</div>
 
-📖 Project Overview
+---
 
-Second Brain is a secure knowledge management system where users can:
+## 📸 Screenshots
 
-Store personal notes/resources
-Save URLs alongside notes
-Edit and update knowledge
-Search through saved content
-Manage all saved resources in one place
+<div align="center">
 
-Unlike simple note-taking apps, this project focuses on:
+### Dashboard
 
-authentication
-protected routes
-persistent sessions
-backend API design
-database relationships
-real deployment architecture
+<img width="900" alt="Dashboard" src="https://github.com/user-attachments/assets/f36c348d-846b-4d2d-a3ad-e51e23eb2e82" />
 
-This project demonstrates real-world full-stack engineering practices using:
+<br/>
+<br/>
 
-frontend deployment
-backend APIs
-database ORM
-authentication
-state management
-API documentation
-✨ Features
-🔐 Authentication System
+### Notes View
 
-A complete authentication flow using JWT + HTTP-only cookies.
+<img width="900" alt="Notes" src="https://github.com/user-attachments/assets/04acd591-b8d8-4da4-884c-4a978e23ec8b" />
 
-Features
-User registration
-User login
-Logout system
-Protected API routes
-Persistent login session
-Secure cookie-based authentication
-Security Measures
-JWT token signing
-Protected middleware
-HTTP-only cookies
-Cross-origin credential handling
-Route authorization
-Token verification
-📝 Note Management (CRUD)
+<br/>
+<br/>
 
-Users can fully manage their saved knowledge.
+### Single Note Page
 
-Create Notes
+<img width="900" alt="Single Post" src="https://github.com/user-attachments/assets/f5958bb9-880e-4f7d-baaa-0f870c932024" />
 
-Users can create notes with:
+</div>
 
-title
-message/content
-optional resource URL
-Read Notes
 
-Users can:
 
-view all saved notes
-access individual note details
-Update Notes
+# Challenges faced 
+- While deploying the application I faced an issue in logging in as the attributes for my setCookie and clear COokie function in the login controller and logout controller for the sameSite were different in login it was sameSite:lax and sameSite:none.
 
-Users can:
+- 
 
-edit title
-modify message/content
-Delete Notes
+---
 
-Users can permanently remove saved notes.
 
-🔍 Smart Search System
-
-Built-in search functionality allows users to quickly find notes.
-
-Search Features
-Search by title
-Real-time search
-Debounced API calls
-Fast response
-Case-insensitive search
-📚 Personal Dashboard
-
-Every authenticated user gets a personalized dashboard.
-
-Features include:
-
-all saved notes
-organized note cards
-quick access to resources
-note preview
-note navigation
-📄 Swagger API Documentation
-
-The backend includes fully documented APIs using Swagger.
-
-Includes
-endpoint documentation
-request body schema
-response types
-testing interface
-authentication endpoints
-CRUD APIs
-
-This makes backend testing and integration much easier.
-
-⚙️ Tech Stack
-Frontend
-React.js
-Vite
-React Router DOM
-Axios
-Zustand
-Tailwind CSS
-Backend
-Node.js
-Express.js
-JWT Authentication
-Cookie Parser
-CORS
-Swagger
-Database
-PostgreSQL
-Prisma ORM
-Deployment
-Frontend
-Vercel
-Backend
-Render
-Database
-PostgreSQL
