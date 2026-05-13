@@ -56,8 +56,7 @@ const SearchDropdown = ({
   const navigate =
     useNavigate();
 
-  // Don't show dropdown
-  // if input is empty
+  
   if (!query.trim()) {
     return null;
   }
@@ -79,7 +78,6 @@ const SearchDropdown = ({
       "
     >
 
-      {/* No Results */}
       {results.length ===
         0 && (
         <div
@@ -92,7 +90,6 @@ const SearchDropdown = ({
         </div>
       )}
 
-      {/* Results */}
       {results.map((post) => (
         <div
           key={post.id}
@@ -152,7 +149,6 @@ const SearchBar = () => {
 
   const [debouncedQuery,setDebouncedQuery] = useState("");
 
-  // Debounce
   useEffect(() => {
 
     const timer =
@@ -165,7 +161,6 @@ const SearchBar = () => {
 
   }, [query]);
 
-  // API Call
   useEffect(() => {
 
     if (

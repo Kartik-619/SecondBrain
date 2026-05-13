@@ -83,19 +83,16 @@ const MyPost = () => {
                                 onClick={() => navigate(`/post/${i.id}`)} 
                                 className="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition duration-300 flex flex-col justify-between"
                             >
-                                {/* Title */}
                                 <h3 className="text-lg font-semibold text-gray-800 mb-2">
                                     {i.title}
                                 </h3>
 
-                                {/* Message */}
                                 {i.message && (
                                     <p className="text-sm text-gray-600 mb-3 line-clamp-3">
                                         {i.message}
                                     </p>
                                 )}
 
-                                {/* URL */}
                                 {i.url && (
                                     <a
                                         href={i.url}

@@ -33,7 +33,7 @@ export default function InputCard() {
     }
     
     return (
-        <div className="min-h-screen bg-black flex items-center justify-center p-4">
+        <div className="min-h-screen bg-white flex items-center justify-center p-4">
             
             {/* Outer White Container */}
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8">
@@ -41,9 +41,8 @@ export default function InputCard() {
             <h2 className="text-3xl font-extrabold text-black mb-6 text-center tracking-tight">                    Create a Post
                 </h2>
 
-                {/* Inner Small Card */}
-                    
-                    <form className="space-y-4" onSubmit={SubmitMessage}>
+          
+                    <form className="space-y-4 shadow:sm" onSubmit={SubmitMessage}>
                         
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
